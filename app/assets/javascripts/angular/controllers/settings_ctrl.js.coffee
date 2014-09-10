@@ -10,4 +10,11 @@ App.controller 'SettingsCtrl', ['$scope', 'Setting', ($scope, $setting) ->
     persisted_setting = $setting.save($scope.new_setting)
     $scope.settings.unshift persisted_setting
     $scope.new_setting = {data_type: 'String'}
+
+  $scope.editSetting = (setting)->
+    $scope.new_setting = setting
+
+  $scope.updateSetting = ()->
+    persisted_setting = $setting.update($scope.new_setting)
+    $scope.new_setting = {data_type: 'String'}
 ]

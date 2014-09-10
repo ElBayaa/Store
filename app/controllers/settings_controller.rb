@@ -15,7 +15,7 @@ class SettingsController < ApplicationController
     respond_to do |format|
       if @setting.save
         format.html { redirect_to @setting, notice: 'Setting was successfully created.' }
-        format.json { render json: :@setting, status: :created, location: nil }
+        format.json { render json: :@setting, status: :created }
       else
         format.html { render :new }
         format.json { render json: @setting.errors, status: :unprocessable_entity }
@@ -30,7 +30,7 @@ class SettingsController < ApplicationController
       @setting = Setting.find(params[:id])
       if @setting.update(setting_params)
         format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
-        format.json { render :@setting, status: :ok, location: @setting }
+        format.json { render json: :@setting, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @setting.errors, status: :unprocessable_entity }
@@ -53,6 +53,6 @@ class SettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit(:data_type, :kind, :value)
+      params.require(:setting).permit(:data_type, :key, :value)
     end
 end
