@@ -17,4 +17,8 @@ App.controller 'SettingsCtrl', ['$scope', 'Setting', ($scope, $setting) ->
   $scope.updateSetting = ()->
     persisted_setting = $setting.update($scope.new_setting)
     $scope.new_setting = {data_type: 'String'}
+  
+  $scope.deleteSetting = (setting, index)->
+    $setting.remove(setting)
+    $scope.settings.splice(index, 1)
 ]

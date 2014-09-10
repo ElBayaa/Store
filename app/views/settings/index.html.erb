@@ -25,6 +25,7 @@
       <tr ng-repeat="setting in settings" ng-dblclick="editSetting(setting)">
         <td>{{setting.key}}</td>
         <td>{{setting.value}}</td>
+        <td><button ng-click="deleteSetting(setting, $index)">Delete</button></td>
       </tr>
     </tbody>
   </table>
