@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :settings, only: [:index, :create, :update, :destroy]
+  resources :settings, only: [:index, :create, :update, :destroy], defaults: {format: :json}
   root 'settings#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

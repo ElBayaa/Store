@@ -1,4 +1,5 @@
 class SettingsController < ApplicationController
+  skip_before_action  :verify_authenticity_token
 
   # GET /settings
   # GET /settings.json
@@ -14,7 +15,7 @@ class SettingsController < ApplicationController
     respond_to do |format|
       if @setting.save
         format.html { redirect_to @setting, notice: 'Setting was successfully created.' }
-        format.json { render :@setting, status: :created, location: @setting }
+        format.json { render json: :@setting, status: :created, location: nil }
       else
         format.html { render :new }
         format.json { render json: @setting.errors, status: :unprocessable_entity }
