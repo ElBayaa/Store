@@ -1,0 +1,28 @@
+<div ng-controller="SettingsCtrl">
+  <form>
+    <select ng-model="new_setting.data_type" ng-options="type for type in ['String', 'Integer', 'Float', 'Boolean']">
+    </select>
+    
+    <input type="text" ng-model="new_setting.key", placeholder="key"/>
+    
+    <input type="text" ng-model="new_setting.value" ng-if="new_setting.data_type == 'String'", placeholder="value"/>
+    <input type="number" ng-model="new_setting.value" ng-if="new_setting.data_type == 'Integer'", placeholder="0"/>
+    <input type="number" ng-model="new_setting.value" ng-if="new_setting.data_type == 'Float'"/, placeholder="0.0">
+    <select ng-model="new_setting.value" ng-init="new_setting.value=true" ng-options="bool for bool in [true, false]" ng-if="new_setting.data_type == 'Boolean'">      
+    </select>
+
+  </form>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>{{new_setting.key}}</td>
+        <td>{{new_setting.value}}</td>
+      </tr>
+      <tr ng-repeat="setting in settings">
+        <td>{{setting.key}}</td>
+        <td>{{setting.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
