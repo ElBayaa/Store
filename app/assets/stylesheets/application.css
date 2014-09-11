@@ -13,3 +13,5 @@
  *= require_tree .
  *= require_self
  */
+
+.validation.ng-dirty.ng-invalid{ border: 2px solid #FF0000; }

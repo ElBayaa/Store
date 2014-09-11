@@ -18,7 +18,7 @@ class SettingsController < ApplicationController
         format.json { render json: :@setting, status: :created }
       else
         format.html { render :new }
-        format.json { render json: @setting.errors, status: :unprocessable_entity }
+        format.json { render json: @setting.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -33,7 +33,7 @@ class SettingsController < ApplicationController
         format.json { render json: :@setting, status: :ok }
       else
         format.html { render :edit }
-        format.json { render json: @setting.errors, status: :unprocessable_entity }
+        format.json { render json: @setting.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
