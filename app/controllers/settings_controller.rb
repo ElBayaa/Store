@@ -4,7 +4,7 @@ class SettingsController < ApplicationController
   # GET /settings
   # GET /settings.json
   def index
-    @settings = Setting.all
+    @settings = Setting.all_cached
     respond_to do |format|
       format.html{}
       format.json { render json: @settings }
@@ -31,7 +31,7 @@ class SettingsController < ApplicationController
   # PATCH/PUT /settings/1.json
   def update
     respond_to do |format|
-      @setting = Setting.find(params[:id])
+      @setting = Setting.find_cached(params[:id])
       if @setting.update(setting_params)
         format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
         format.json { render json: :@setting, status: :ok }
@@ -45,7 +45,7 @@ class SettingsController < ApplicationController
   # DELETE /settings/1
   # DELETE /settings/1.json
   def destroy
-    @setting = Setting.find(params[:id])
+    @setting = Setting.find_cached(params[:id])
     @setting.destroy
     respond_to do |format|
       format.html { redirect_to settings_url, notice: 'Setting was successfully destroyed.' }
