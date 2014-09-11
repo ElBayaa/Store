@@ -12,7 +12,7 @@ App.controller 'SettingsCtrl', ['$scope', 'Setting', ($scope, $setting) ->
       $scope.settings = $setting.query()
       $scope.new_setting = {data_type: 'String'}
       $scope.model_errors = null
-      $('input.validation').removeClass('ng-dirty')
+      $('input.validate').removeClass('ng-dirty')
     , (res)->
       $scope.model_errors = res.data
 
@@ -23,7 +23,7 @@ App.controller 'SettingsCtrl', ['$scope', 'Setting', ($scope, $setting) ->
     $setting.update $scope.new_setting, (data)->
       $scope.new_setting = {data_type: 'String'}
       $scope.model_errors = null
-      $('input.validation').removeClass('ng-dirty')
+      $('input.validate').removeClass('ng-dirty')
     , (res)->
       $scope.model_errors = res.data
   

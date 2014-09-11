@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
+//= require ie-emulation-modes-warning.js
 //= require angular
 //= require angular-resource
 //= require main
