@@ -9,6 +9,8 @@ class Setting < ActiveRecord::Base
 
   after_commit :flush_cache
 
+  default_scope { order('created_at desc') } 
+
 
   def value
     case data_type
@@ -17,10 +19,18 @@ class Setting < ActiveRecord::Base
     when 'Float'
       read_attribute(:value).to_f
     when 'Boolean'
-      read_attribute(:value) == 't'
+      ['true', 'false'].include?(read_attribute(:value)) ? read_attribute(:value) == 'true' : nil
     else
       read_attribute(:value)
     end
+  end
+
+  def value= v
+    if data_type == 'Boolean'
+      self[:value] = v.to_s
+    else
+      super
+    end    
   end
 
   def self.all_cached
@@ -35,5 +45,4 @@ class Setting < ActiveRecord::Base
     Rails.cache.delete([self.class.name, id])
     Rails.cache.delete(self.class.name)
   end
-
 end

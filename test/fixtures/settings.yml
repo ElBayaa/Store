@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  data_type: MyString
-  key: MyString
-  value: MyString
+  data_type: String
+  key: string key
+  value: string value
 
 two:
-  data_type: MyString
-  key: MyString
-  value: MyString
+  data_type: Integer
+  key: integer key
+  value: 55
