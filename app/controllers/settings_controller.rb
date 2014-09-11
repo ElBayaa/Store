@@ -5,6 +5,10 @@ class SettingsController < ApplicationController
   # GET /settings.json
   def index
     @settings = Setting.all
+    respond_to do |format|
+      format.html{}
+      format.json { render json: @settings }
+    end
   end
 
   # POST /settings

@@ -9,7 +9,7 @@ App.controller 'SettingsCtrl', ['$scope', 'Setting', ($scope, $setting) ->
 
   $scope.createSetting = ()->
     $setting.save $scope.new_setting, (data)->
-      $scope.settings.unshift data
+      $scope.settings = $setting.query()
       $scope.new_setting = {data_type: 'String'}
       $scope.model_errors = null
       $('input.validation').removeClass('ng-dirty')
